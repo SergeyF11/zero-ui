@@ -13,6 +13,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import ManagedRoutes from "./components/ManagedRoutes";
 import IPv4AutoAssign from "./components/IPv4AutoAssign";
+import CustomDNS  from "./components/CustomDNS";
 
 import API from "utils/API";
 import { parseValue, replaceValue, setValue } from "utils/ChangeHelper";
@@ -128,10 +129,13 @@ function NetworkSettings({ network, setNetwork }) {
             />
             <span>Enable Broadcast</span>
           </Grid>
-          {/* TODO: */}
-          {/* <Grid item>
-            <Typography>DNS</Typography>
-          </Grid> */}
+          <Divider />    
+          <Grid item>
+            <CustomDNS
+              dns={network["config"]["dns"]}
+              handleChange={handleChange}
+              />
+          </Grid>
         </Grid>
       </AccordionDetails>
     </Accordion>
