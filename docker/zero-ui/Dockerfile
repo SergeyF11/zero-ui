@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:lts-alpine as frontend-build
+FROM --platform=$BUILDPLATFORM node:18.18.0-alpine as frontend-build
 
 ENV GENERATE_SOURCEMAP=false
 
@@ -13,7 +13,7 @@ COPY ./frontend /app/frontend
 RUN yarn build
 
 
-FROM node:lts-alpine
+FROM node:18.18.0-alpine
 
 WORKDIR /app/frontend/build
 COPY --from=frontend-build /app/frontend/build /app/frontend/build/
